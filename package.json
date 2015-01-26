@@ -1,0 +1,33 @@
+{
+  "name": "parse-attr-options",
+  "version": "0.0.1",
+  "description": "Parses a string of semi-colon delimited options into a plain object.",
+  "main": "lib/parse-attr-options.js",
+  "scripts": {
+    "test": "mocha --ui bdd -R spec test/parse-attr-options.js",
+    "build": "6to5 lib/parse-attr-options.js --modules umd --out-file dist/parse-attr-options.js",
+    "watch:test": "watch 'npm run test' ./test",
+    "watch:build": "watch 'npm run build' ./lib",
+    "dev": "npm run watch:build & npm run watch:test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/twalker/parse-attr-options.git"
+  },
+  "keywords": [
+    "data-attributes"
+  ],
+  "author": "twalker",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/twalker/parse-attr-options/issues"
+  },
+  "homepage": "https://github.com/twalker/parse-attr-options",
+  "dependencies": { },
+  "devDependencies": {
+    "6to5": "^2.13.7",
+    "mocha": "^2.1.0",
+    "chai": "^1.10.0",
+    "watch": "^0.13.0"
+  }
+}
