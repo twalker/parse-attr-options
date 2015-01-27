@@ -34,6 +34,7 @@ Does not support Objects, quotes, or nesting.
 ### module name candidates
 
 - parse-attr-options
+- attr-options
 - data-options
 - parse-data-options
 - DAN (data attribute notation)
