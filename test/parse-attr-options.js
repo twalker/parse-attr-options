@@ -18,6 +18,28 @@ describe('parse(sOptions)', function(){
   });
 });
 
+describe('parseValue(sVal)', function(){
+  it('should parse a string value', function(){
+    assert.equal(parse.parseValue('foo'), 'foo');
+    assert.equal(parse.parseValue('foo bar baz'), 'foo bar baz');
+    assert.isUndefined(parse.parseValue());
+  });
+  it('should parse a number value', function(){
+    assert.equal(parse.parseValue('2.34'), 2.34);
+  });
+  it('should parse a boolean value', function(){
+    assert.isFalse(parse.parseValue('false'));
+    assert.isTrue(parse.parseValue('true'));
+  });
+  it('should parse arrays of primitives', function(){
+    assert.deepEqual(parse.parseValue('[1,hello, false]'), [1, 'hello', false]);
+  });
+  it('should handle problematic values', function(){
+    assert.isNull(parse.parseValue('null'))
+    assert.isUndefined(parse.parseValue());
+  });
+});
+
 describe('stringify(options)', function(){
   it('should stringify an vanilla object of options', function(){
     var opts = {align: 'center', width: '600px'};
@@ -30,8 +52,25 @@ describe('stringify(options)', function(){
   });
 });
 
-describe.skip('parseValue(sVal)', function(){
-  it('should parse a string value', function(){
-    assert.isFunction(parse.parseValue);
+describe('stringifyValue(val)', function(){
+  it('should stringify a string value', function(){
+    assert.equal(parse.stringifyValue('foo'), 'foo');
+    //assert.isUndefined(parse.stringifyValue());
+  });
+  it('should stringify a number value', function(){
+    assert.equal(parse.stringifyValue(2.34), '2.34');
+  });
+  it('should stringify a boolean value', function(){
+    assert.equal(parse.stringifyValue(false), 'false');
+    assert.equal(parse.stringifyValue(true), 'true');
+  });
+  it('should stringify arrays of primitives', function(){
+    assert.equal(parse.stringifyValue([1, 'hello', false]), '[1,hello,false]');
+  });
+  it('should handle problematic values', function(){
+    assert.equal(parse.stringifyValue(null), 'null')
+    assert.isUndefined(parse.stringifyValue());
+    assert.equal(parse.stringifyValue(''), '');
+    assert.equal(parse.stringifyValue([1, function(){}, {a:'foo'}]), '[1]');
   });
 });

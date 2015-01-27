@@ -8,16 +8,21 @@
   "use strict";
 
   exports = module.exports = parse;
+  exports.parseValue = parseValue;
   exports.stringify = stringify;
   exports.stringifyValue = stringifyValue;
-  exports.parseValue = parseValue;
   /**
   * parseAttrOptions
   * Parses a string of semi-colon delimited options into a plain object.
+  * Stringify provides the reverse.
   *
   * @example
-  * parseAttrOptions('align: center; width: 300; neat: true; yagni: [1,2,3]');
+  * parse('align: center; width: 300; neat: true; yagni: [1,2,3]');
   * >> {align: 'center', width: 300, neat: true, yagni: [1,2,3]}
+  * 
+  * stringify({align: 'center', width: 300, neat: true, yagni: [1,2,3]});
+  * >> 'align: center; width: 300; neat: true; yagni: [1,2,3]'
+  *
   */
   function parse(sOptions) {
     var opts = {};
@@ -36,35 +41,6 @@
 
     return opts;
   }
-
-  function filterValue(val) {
-    if ("string boolean number".indexOf(typeof val) > 1) return true;
-    if (Array.isArray(val)) return true;
-    if (val === null) return true;
-    return false;
-  }
-
-  function stringify(options) {
-    var sOptions = Object.keys(options)
-    // TOREVISIT
-    .filter(function (key) {
-      return filterValue.bind(null, options);
-    })
-    // .filter(key => {
-    //   return filterValue(options[key])
-    // })
-    .map(function (key) {
-      return "" + key + ": " + stringifyValue(options[key]);
-    });
-    return sOptions.join("; ");
-  }
-
-  function stringifyValue(val) {
-    if (Array.isArray(val)) return "[" + val.map(stringifyValue).join(",") + "]";
-    if (val === null) return "null";
-    return val.toString();
-  }
-
   function parseValue(s) {
     if (/^true$/i.test(s)) return true;
     if (/^false$/i.test(s)) return false;
@@ -77,5 +53,28 @@
       }).map(parseValue);
     }
     return s;
+  }
+
+  function stringify(options) {
+    var sOptions = Object.keys(options).filter(function (key) {
+      return isPrimitive(options[key]);
+    }).map(function (key) {
+      return "" + key + ": " + stringifyValue(options[key]);
+    });
+    return sOptions.join("; ");
+  }
+
+  function stringifyValue(val) {
+    if (Array.isArray(val)) return "[" + val.filter(isPrimitive).map(stringifyValue).join(",") + "]";
+    if (val === null) return "null";
+    if (val === undefined) return val;
+    return val.toString();
+  }
+
+  function isPrimitive(val) {
+    if ("string boolean number".indexOf(typeof val) > -1) return true;
+    if (Array.isArray(val)) return true;
+    if (val === null) return true;
+    return false;
   }
 });
