@@ -31,5 +31,16 @@ Supports `string`, `boolean`, and `number` values, and arrays composed of the sa
 Does not support Objects, quotes, or nesting.  
 
 
+### module name candidates
+
+- parse-attr-options
+- data-options
+- parse-data-options
+- DAN (data attribute notation)
+- data-attr-parser
+- dom-options
+- domopts
+
 ---------------------
+
 inspired by: https://github.com/dfcreative/parse-attr
