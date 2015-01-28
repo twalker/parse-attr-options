@@ -4,7 +4,7 @@
   "description": "Parses a string of semi-colon delimited options into a plain object.",
   "main": "lib/parse-attr-options.js",
   "scripts": {
-    "test": "mocha --ui bdd -R spec test/parse-attr-options.js",
+    "test": "mocha --compilers js:6to5/register --ui bdd -R spec test/parse-attr-options.js",
     "build": "6to5 lib/parse-attr-options.js --modules umd --out-file dist/parse-attr-options.js",
     "watch:test": "watch 'npm run test' ./test",
     "watch:build": "watch 'npm run build' ./lib",

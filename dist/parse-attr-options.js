@@ -19,7 +19,7 @@
   * @example
   * parse('align: center; width: 300; neat: true; yagni: [1,2,3]');
   * >> {align: 'center', width: 300, neat: true, yagni: [1,2,3]}
-  * 
+  *
   * stringify({align: 'center', width: 300, neat: true, yagni: [1,2,3]});
   * >> 'align: center; width: 300; neat: true; yagni: [1,2,3]'
   *
@@ -41,6 +41,7 @@
 
     return opts;
   }
+
   function parseValue(s) {
     if (/^true$/i.test(s)) return true;
     if (/^false$/i.test(s)) return false;
