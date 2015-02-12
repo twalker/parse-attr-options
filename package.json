@@ -25,9 +25,9 @@
   "homepage": "https://github.com/twalker/parse-attr-options",
   "dependencies": { },
   "devDependencies": {
-    "6to5": "^2.13.7",
+    "6to5": "^3.5.3",
     "mocha": "^2.1.0",
-    "chai": "^1.10.0",
+    "chai": "^2.0.0",
     "watch": "^0.13.0"
   }
 }
