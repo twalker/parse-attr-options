@@ -1,6 +1,6 @@
 {
   "name": "parse-attr-options",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Parses a string of semi-colon delimited options into a plain object.",
   "main": "lib/parse-attr-options.js",
   "scripts": {
@@ -23,7 +23,7 @@
     "url": "https://github.com/twalker/parse-attr-options/issues"
   },
   "homepage": "https://github.com/twalker/parse-attr-options",
-  "dependencies": { },
+  "dependencies": {},
   "devDependencies": {
     "6to5": "^3.5.3",
     "mocha": "^2.1.0",
