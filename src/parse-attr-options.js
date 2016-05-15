@@ -11,7 +11,7 @@
 * >> 'align: center; width: 300; neat: true; yagni: [1,2,3]'
 *
 */
-export default function parse(sOptions){
+export function parse(sOptions){
   let opts = {};
   if(!sOptions) return opts;
   sOptions
