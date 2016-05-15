@@ -4,9 +4,9 @@
 Parses a string of semi-colon delimited options into a plain object. Stringify provides the reverse.
 
 ```javascript
-import {parse, stringify } from 'src/parse-attr-options'
+import { parse, stringify } from 'parse-attr-options'
 
-parse('align: center; width: 300; neat: true; yagni: [1,2,3]');
+parse('align: center; width: 300; neat: true; yagni: [1,2,3]')
 >> {align: 'center', width: 300, neat: true, yagni: [1,2,3]}
 
 stringify({align: 'center', width: 300, neat: true, yagni: [1,2,3]});
@@ -20,11 +20,12 @@ Useful for options in dom `data-`attributes:
 <script>
   let el = document.querySelector('section')
   let opts = parse(el.getAttribute('data-options'))
-  alert(`section last updated on ${opts.stamp}`)
+  console.info(`section last updated on ${opts.stamp}`)
 </script>
 ```
 
 ## Why?!
+
 Serializing and deserializing JSON in dom `data-` attributes can become a knot of single/double quotes.  
 This module provides a small quoteless alternative for a shallow set of options.  
 Supports `string`, `boolean`, and `number` values, and arrays composed of the same.  
