@@ -1,23 +1,11 @@
-/**
-* parseAttrOptions
-* Parses a string of semi-colon delimited options into a plain object.
-* Stringify provides the reverse.
-*
-* @example
-* parse('align: center; width: 300; neat: true; yagni: [1,2,3]');
-* >> {align: 'center', width: 300, neat: true, yagni: [1,2,3]}
-*
-* stringify({align: 'center', width: 300, neat: true, yagni: [1,2,3]});
-* >> 'align: center; width: 300; neat: true; yagni: [1,2,3]'
-*
-*/
 export function parse(sOptions){
   let opts = {};
   if(!sOptions) return opts;
   sOptions
     .split(/;/)
     .filter( pair => /.+:.+/.test(pair))
-    .map( pair => pair.split(/:/).map( p => p.trim()))
+    .map( pair => pair.split(/:/)
+    .map( p => p.trim()))
     .filter( pair => pair.length === 2)
     .forEach( pair => opts[pair[0]] = parseValue(pair[1]));
 
