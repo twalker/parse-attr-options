@@ -1,6 +1,6 @@
 {
   "name": "parse-attr-options",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Parses a string of semi-colon delimited options into a plain object.",
   "main": "dist/parse-attr-options.js",
   "scripts": {
