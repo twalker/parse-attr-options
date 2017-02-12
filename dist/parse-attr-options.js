@@ -4,25 +4,12 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 exports.parse = parse;
 exports.parseValue = parseValue;
 exports.stringify = stringify;
 exports.stringifyValue = stringifyValue;
-/**
-* parseAttrOptions
-* Parses a string of semi-colon delimited options into a plain object.
-* Stringify provides the reverse.
-*
-* @example
-* parse('align: center; width: 300; neat: true; yagni: [1,2,3]');
-* >> {align: 'center', width: 300, neat: true, yagni: [1,2,3]}
-*
-* stringify({align: 'center', width: 300, neat: true, yagni: [1,2,3]});
-* >> 'align: center; width: 300; neat: true; yagni: [1,2,3]'
-*
-*/
 function parse(sOptions) {
   var opts = {};
   if (!sOptions) return opts;
